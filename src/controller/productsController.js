@@ -3,9 +3,9 @@ let DB = require("../database/models");
 var cloudinary = require("cloudinary").v2;
 //config cloudinary
 cloudinary.config({
-  cloud_name: "hr2mtqarh",
-  api_key: "955251143448688",
-  api_secret:"o48NutaUhb1aHnEofXTSJRsONCo",
+  cloud_name: "dyzd94ova",
+  api_key: "518829137534427",
+  api_secret:"q3wl_vQCfyXctutmxoF9fF-B-BA",
 });
 //const fs  = require('fs-extra')
 
