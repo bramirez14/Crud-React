@@ -1,13 +1,13 @@
 let DB = require("../database/models");
 //cloudinary
-/*var cloudinary = require("cloudinary").v2;
+var cloudinary = require("cloudinary").v2;
 //config cloudinary
 cloudinary.config({
-  cloud_name: "dyzd94ova",
-  api_key: "518829137534427",
-  api_secret:"q3wl_vQCfyXctutmxoF9fF-B-BA",
+  cloud_name: "hr2mtqarh",
+  api_key: "955251143448688",
+  api_secret:"o48NutaUhb1aHnEofXTSJRsONCo",
 });
-const fs  = require('fs-extra')*/
+const fs  = require('fs-extra')
 
 
 const productsController = {
@@ -26,8 +26,8 @@ get: async (req, res) => {
  try{
  const { course ,price,professor,discount,hours,level } = req.body
  
- //const path = req.files[0].path
-// const result = await cloudinary.uploader.upload(path);
+ const path = req.files[0].path
+ const result = await cloudinary.uploader.upload(path);
 
  let courseCreated = await DB.courses.create({
  course,
@@ -36,12 +36,12 @@ get: async (req, res) => {
  discount,
  hours,
  level,
- //image:result.secure_url,
- //public_id:result.public_id
+ image:result.secure_url,
+ public_id:result.public_id
  })
 
  //para borrar la imagen que crea multer
- // await fs.unlink(path)
+  await fs.unlink(path)
  res.send('curso creado')
  }catch (error) {
     res.send(error);
@@ -64,9 +64,9 @@ get: async (req, res) => {
   delete:async (req, res) => {
  try{
    const { id } = req.params;
-   //let course = await DB.courses.findByPk(id);
-   //console.log(course.dataValues.public_id)
-   //await cloudinary.uploader.destroy(course.dataValues.public_id);
+   let course = await DB.courses.findByPk(id);
+   console.log(course.dataValues.public_id)
+   await cloudinary.uploader.destroy(course.dataValues.public_id);
  let courseDeleted = await DB.courses.destroy({
         where: {
           id: id,
