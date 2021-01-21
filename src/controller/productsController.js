@@ -7,7 +7,7 @@ cloudinary.config({
   api_key: "518829137534427",
   api_secret:"q3wl_vQCfyXctutmxoF9fF-B-BA",
 });
-//const fs  = require('fs-extra')
+const fs  = require('fs-extra')
 
 
 const productsController = {
@@ -41,7 +41,7 @@ get: async (req, res) => {
  })
 
  //para borrar la imagen que crea multer
- // await fs.unlink(path)
+  await fs.unlink(path)
  res.send('curso creado')
  }catch (error) {
     res.send(error);
