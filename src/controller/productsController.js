@@ -50,8 +50,17 @@ get: async (req, res) => {
  put:async (req, res) => {
  try{
   const { id } = req.params;
-    let datos = req.body
-    await DB.courses.update(datos, {
+    let { course,price,professor,discount,hours,level } = req.body
+
+    console.log(price)
+   await DB.courses.update({
+  course:course,
+ 	discount:discount,
+  professor:professor,
+  hours:hours,
+  level:level,
+   price:price,
+    }, {
     where: {
       id: id,
     }
