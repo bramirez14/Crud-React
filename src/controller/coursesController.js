@@ -10,7 +10,7 @@ cloudinary.config({
 //const fs  = require('fs-extra')
 
 
-const productsController = {
+const coursesController = {
 
 get: async (req, res) => {
       try {
@@ -29,7 +29,7 @@ get: async (req, res) => {
  const path = req.files[0].path
  const result = await cloudinary.uploader.upload(path);
 
- let courseCreated = await DB.courses.create({
+  await DB.courses.create({
  course,
  price,
  professor,
@@ -76,7 +76,7 @@ get: async (req, res) => {
    let course = await DB.courses.findByPk(id);
    console.log(course.dataValues.public_id)
    await cloudinary.uploader.destroy(course.dataValues.public_id);
- let courseDeleted = await DB.courses.destroy({
+  await DB.courses.destroy({
         where: {
           id: id,
         },
@@ -87,4 +87,4 @@ get: async (req, res) => {
   }
   }
 }
-module.exports = productsController;
+module.exports = coursesController;

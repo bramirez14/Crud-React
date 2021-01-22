@@ -6,7 +6,7 @@ var methodOverride = require('method-override')
 
 
 //llama a las rutas 
-const Controller= require('../controller/productsController');
+const Controller= require('../controller/coursesController');
 //fx de multer
 const storage = multer.diskStorage({
   destination: path.join(__dirname,'public/upload'),
