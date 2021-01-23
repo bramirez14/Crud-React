@@ -29,7 +29,7 @@ get: async (req, res) => {
  const path = req.files[0].path
  const result = await cloudinary.uploader.upload(path);
 
-  await DB.courses.create({
+  let courseCreated = await DB.courses.create({
  course,
  price,
  professor,
@@ -42,7 +42,7 @@ get: async (req, res) => {
 
  //para borrar la imagen que crea multer
  // await fs.unlink(path)
- res.send('curso creado')
+ res.send(courseCreated)
  }catch (error) {
     res.send(error);
   }
@@ -53,7 +53,7 @@ get: async (req, res) => {
     let { course,price,professor,discount,hours,level } = req.body
 
     console.log(price)
-   await DB.courses.update({
+   let courseEdited = await DB.courses.update({
   course:course,
  	discount:discount,
   professor:professor,
@@ -65,7 +65,7 @@ get: async (req, res) => {
       id: id,
     }
   });
-  res.send('producto editado con exito')
+  res.send(courseEdited)
  }catch (error) {
     res.send(error);
   }
