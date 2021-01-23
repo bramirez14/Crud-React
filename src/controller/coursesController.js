@@ -65,7 +65,7 @@ get: async (req, res) => {
       id: id,
     }
   });
-  res.send(courseEdited)
+  res.send('producto editado con exito!!!')
  }catch (error) {
     res.send(error);
   }
