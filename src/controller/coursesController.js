@@ -47,6 +47,15 @@ get: async (req, res) => {
     res.send(error);
   }
  },
+   edit: async (req, res) => {
+    try {
+      let id = req.params.id;
+      let course = await DB.courses.findByPk(id);
+      res.send(course);
+    } catch (error) {
+	res.send(error)
+    }
+  },
  put:async (req, res) => {
  try{
   const { id } = req.params;
@@ -67,7 +76,7 @@ get: async (req, res) => {
   });
   res.send('producto editado con exito!!!')
  }catch (error) {
-    res.send(error);
+        res.send("No se pudo editar el producto, intentelo mas tarde");
   }
   },
   delete:async (req, res) => {
