@@ -13,7 +13,7 @@ var db = require('../database/models')
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3030');
 //db.sequelize.sync()
 app.set('port', port);
 
